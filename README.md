@@ -1,1 +1,1 @@
-freeCodeCamp_projects
+freeCodeCamp Basic javascript assignments
