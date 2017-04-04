@@ -5,17 +5,6 @@
  * @param {size} 
  */
 
-// function chunkArrayInGroups_(arr, size) {
-//     var out = out || []
-//     if (arr.length <= size) {
-//         out.push(arr)
-//     } else {
-//         out.push(arr.slice(0, size))
-//         chunkArrayInGroups(arr.slice(size), size)
-//     }
-//     return out
-// }
-
 function chunkArrayInGroups(arr, size) {
     var out = []
 
