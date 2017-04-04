@@ -8,15 +8,15 @@
 function chunkArrayInGroups(arr, size) {
     var out = []
 
-    function fx(arr, size) {
+    function helperFun(arr, size) {
         if (arr.length <= size) out.push(arr)
         else {
             out.push(arr.slice(0, size))
-            fx(arr.slice(size), size)
+            helperFun(arr.slice(size), size)
         }
         return out
     }
-    return fx(arr, size)
+    return helperFun(arr, size)
 }
 
 
