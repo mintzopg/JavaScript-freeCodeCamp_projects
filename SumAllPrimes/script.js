@@ -13,7 +13,7 @@ function sumPrimes(num) {
     return primes(num + 1).reduce((sum, curr) => sum + curr, 0)
     
     function primes(n) {
-        if (n <= 1) return [];
+        if (n <= 1) return []
         
         let A = Array(2 + n).fill(true) // array of booleans indexed 2 to n
         let out = []
@@ -26,19 +26,19 @@ function sumPrimes(num) {
                     j = Math.pow(i, 2) + k * i
                 while (j < n) {
                     j = Math.pow(i, 2) + k * i;
-                    A[j] = false;
-                    k++;
+                    A[j] = false
+                    k++
                 }
             }
         }
         // Output: all primes are the indexes i such that A[i] is true
         for (i = 2; i < n; i++) {
             if (A[i] === true) {
-                out.push(i);
+                out.push(i)
             }
         }
         // Output is a list containg all primes < n
-        return out;
+        return out
     }
 }
 
