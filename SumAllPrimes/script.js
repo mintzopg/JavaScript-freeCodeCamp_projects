@@ -37,7 +37,7 @@ function sumPrimes(num) {
                 out.push(i)
             }
         }
-        // Output is a list containg all primes < n
+        // Output is a list containing all primes < n
         return out
     }
 }
