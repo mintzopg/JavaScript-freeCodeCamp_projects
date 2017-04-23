@@ -7,7 +7,7 @@
 function primes(n) {
     if (n <= 1) return []
 
-    let A = Array(2 + n).fill(true) // array of booleans indexed 2 to n
+    let A = new Array(2 + n).fill(true) // array of booleans indexed 2 to n
     let out = []
     let i
 
@@ -59,10 +59,10 @@ function primeFactors(num) {
 }
 
 /**
- * Return the greatest common divisor of a and b
+ * Return the greatest common divisor of a and b (a, b > =)
  * 
- * @param {Int > 0} x 
- * @param {Int > 0} y 
+ * @param {Int} x
+ * @param {Int} y
  * @returns {Int} gcd
  */
 function gcd(x, y) { // Implements The Euclidean Algorithm
