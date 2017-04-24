@@ -1,15 +1,14 @@
 /**
  * Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
  * 
- * @param {any} collection 
- * @param {any} pre 
- * @returns 
+ * @param {Array[Object]} collection 
+ * @param {String} pre 
+ * @returns Boolean
  */
 function truthCheck(collection, pre) {
     // Is everyone being true?
-    let result
     for (let obj of collection) {
-        result = false
+        var result = false
         for (let k of Object.keys(obj)) {
             if (k === pre && Boolean(obj[k])) result = true
         }
