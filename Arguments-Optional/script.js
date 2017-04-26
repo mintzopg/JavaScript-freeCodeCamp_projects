@@ -9,8 +9,7 @@ If either argument isn't a valid number, return undefined.
  */
 function addTogether() {
     let args = [...arguments]
-    let x = args[0]
-    let y = args[1]
+    let [x, y] = args
 
     if (x && !Number.isInteger(x)) return undefined
     if ((x || x == 0) && (y || y == 0)) return f(y)
