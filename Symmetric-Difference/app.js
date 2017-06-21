@@ -41,6 +41,7 @@ function symdiff(arr1, arr2) {
             return acc;
         }, []);
 
+        // count occurences
         arr.forEach(i => {
             if (map.has(i)) map.set(i, map.get(i) + 1);
             else map.set(i, 1);
