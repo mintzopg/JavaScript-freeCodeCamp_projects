@@ -1,17 +1,20 @@
 function checkCashRegister(price, cash, cid) {
-    'useesversion:6'
+    // Brute force solution is the optimal in this situation where cid is known and fixed
 
-    let changeArr = new Map();
+    'useesversion:6';
+
+    let changeMap = new Map(); //this will be returned from the function
     let n = cid.length - 1;
     let change = Math.abs(price - cash);
 
     let cashInDrawer = cidArray => Number(
+        // compute the valid (money units that can be returned i.e. <= change) amount in drawer
         (cidArray.filter(
             item => item[2] <= change)).reduce(
             (acc, coin) => acc + coin[1], 0).toFixed(2)
     );
 
-    const valuesMap = new Map([
+    const valuesMap = new Map([ // reference of valid money units
         [0.01, "PENNY"],
         [0.05, "NICKEL"],
         [0.10, "DIME"],
@@ -26,7 +29,7 @@ function checkCashRegister(price, cash, cid) {
     // Find the number of money units per category. This transforms cid as a 2D array
     // ... e.g. [[101, 1.01, 0.01], [41, 2.05, 0.05], ...]
     ((arr) => {
-        // Define a constant of money values
+        // Define a constant of money values indexed the same as cid
         const moneyVals = [.01, .05, .1, .25, 1, 5, 10, 20, 100];
 
         cid.forEach((val, i) => {
@@ -35,6 +38,7 @@ function checkCashRegister(price, cash, cid) {
         });
     })(cid);
 
+    // Check boundary conditions
     let c = cashInDrawer(cid);
     if (c < change) return "Insufficient Funds";
     if (c == change) return "Closed";
@@ -42,7 +46,7 @@ function checkCashRegister(price, cash, cid) {
     // main logic
     while (n >= 0) {
         c = cashInDrawer(cid);
-        if (change <= 0) return format(changeArr);
+        if (change <= 0) return format(changeMap);
 
         deduceAmount(cid[n]);
         n = cid.length - 1;
@@ -69,21 +73,24 @@ function checkCashRegister(price, cash, cid) {
     }
 
     function addToChange(value) {
-        // returns the total of same value changeArr as asked
+        // adds the change amounts to the changeMap
         let key = valuesMap.get(value);
 
-        if (changeArr.has(key)) {
-            changeArr.set(key, changeArr.get(key) + value);
-        } else changeArr.set(key, value);
+        if (changeMap.has(key)) {
+            changeMap.set(key, changeMap.get(key) + value);
+        } else changeMap.set(key, value);
     }
 
     function format(map) {
+        // transform the changeMap to an array with the specific format asked 
         let iter = map.entries();
         let output = [];
         for (let value of iter) output.push(value);
         return output;
     }
 }
+
+// Tests
 
 console.log(
     checkCashRegister(19.50, 20.00, [
