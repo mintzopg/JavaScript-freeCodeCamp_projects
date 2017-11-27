@@ -13,7 +13,6 @@ function permAlone(str) {
         else {
             for (let i = l; i < r + 1; i++) {
                 // swap values
-                // console.log(a[l], a[i]);
                 a[l] = [a[i], a[i] = a[l]][0];
                 permute(a, l + 1, r)
                 a[l] = [a[i], a[i] = a[l]][0]; // backtrack
