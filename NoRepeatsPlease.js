@@ -5,12 +5,11 @@ function permAlone(str) {
     let a = str.split("");
     let n = str.length;
     permute(a, 0, n - 1);
-    // console.log(p);
 
     return p.filter(s => !strCheck(s)).length;
 
     function permute(a, l = 0, r) {
-        if (l === r) p.push(a.join('')); //console.log(a.join(''));
+        if (l === r) p.push(a.join('')); 
         else {
             for (let i = l; i < r + 1; i++) {
                 // swap values
